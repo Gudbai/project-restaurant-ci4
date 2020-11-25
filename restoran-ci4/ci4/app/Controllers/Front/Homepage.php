@@ -1,8 +1,6 @@
-<?php
+<?php namespace App\Controllers\Front;
 
-namespace App\Controllers\Front;
-
-use App\Controllers\BaseController;
+use \App\Controllers\BaseController;
 
 class Homepage extends BaseController
 {

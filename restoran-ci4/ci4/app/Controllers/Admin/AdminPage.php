@@ -1,16 +1,12 @@
-<?php
-
-namespace App\Controllers\Admin;
-
-use App\Controllers\BaseController;
-
+<?php namespace App\Controllers\Admin;
+use \App\Controllers\BaseController;
 class AdminPage extends BaseController
 {
-    public function index()
-    {
-        return view('template/admin');
-    }
+	public function index()
+	{
+		return view('template/admin');
+	}
 
-    //--------------------------------------------------------------------
+	//--------------------------------------------------------------------
 
 }

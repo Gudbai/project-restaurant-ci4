@@ -8,13 +8,15 @@
 
 <div class="row">
 
-    <h1>UPLOAD IMAGE</h1>
 
+
+    <h1>Upload Image</h1>
     <form action="<?= base_url('/admin/menu/insert') ?>" method="post" enctype="multipart/form-data">
-
-        Gambar : <input type="file" name="gambar" id="" required>
+        Gambar : <input type="file" name="gambar" required>
         <br>
-        <input type="submit" name="simpan" value="simpan">
+
+        <input type="submit" name="simpan" value="SIMPAN">
     </form>
 </div>
+
 <?= $this->endSection() ?>

@@ -23,7 +23,6 @@
                     <span aria-hidden="true"><?= lang('Pager.next') ?></span>
                 </a>
             </li>
-
         <?php endif ?>
     </ul>
 </nav>

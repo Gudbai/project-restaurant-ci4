@@ -12,14 +12,15 @@ class Kategori_M extends Model
 
     protected $primaryKey = 'idkategori';
 
-    protected $validationRules    = [
-        'kategori' => 'alpha_numeric_space|min_length[3]|is_unique[tblkategori.kategori]',
+    protected $validationRules = [
+        'kategori' => 'alpha_numeric_space|min_length[3]|is_unique[tblkategori.kategori]'
     ];
+
     protected $validationMessages = [
         'kategori' => [
-            'alpha_numeric_space' => 'Sorry. No Symbol',
-            'min_length' => 'Sorry. Minimum 3 letters',
-            'is_unique' => 'This data already available'
+            'alpha_numeric_space' => 'Nama kategori tidak bisa menggunakan simbol',
+            'min_length' => 'Nama kategori terlalu pendek',
+            'is_unique' => 'Nama kategori sudah dipakai'
         ]
     ];
 }
