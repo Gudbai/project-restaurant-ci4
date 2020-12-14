@@ -13,23 +13,24 @@
 </div>
 
 <div class="col">
-    <h3>Insert Data</h3>
+    <h3> INSERT DATA</h3>
 </div>
 
 <div class="col-8">
-    <form action="<?= base_url('/admin/kategori/insert') ?>" method="post">
+    <form action="<?= base_url('/admin/kategori/insert') ?>" method="POST">
         <div class="form-group">
-            <label for="Kategori">Kategori</label>
-            <input type="text" name="kategori" required class="form-control">
+            <label for="kategori">Kategori</label>
+            <input type="text" name="kategori" required class="form-control" id="kategori">
         </div>
         <div class="form-group">
-            <label for="Keterangan">Keterangan</label>
-            <input type="text" name="keterangan" required class="form-control">
+            <label for="keterangan">Keterangan</label>
+            <input type="text" name="keterangan" required class="form-control" id="keterangan">
         </div>
         <div class="form-group">
             <input type="submit" name="simpan" value="SIMPAN">
         </div>
+
+
     </form>
 </div>
-
 <?= $this->endSection() ?>

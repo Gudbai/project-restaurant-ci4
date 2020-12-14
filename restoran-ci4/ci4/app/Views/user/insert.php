@@ -17,35 +17,36 @@
 </div>
 
 <div class="col">
-    <h3>Insert Data</h3>
+    <h3> INSERT DATA</h3>
 </div>
 
 <div class="col-8">
-    <form action="<?= base_url('/admin/user/insert') ?>" method="post">
+    <form action="<?= base_url('/admin/user/insert') ?>" method="POST">
         <div class="form-group">
-            <label for="Kategori">User</label>
-            <input type="text" name="user" required class="form-control">
+            <label for="user">User</label>
+            <input type="text" name="user" required class="form-control" id="user">
         </div>
         <div class="form-group">
-            <label for="Keterangan">Email</label>
-            <input type="email" name="email" required class="form-control">
+            <label for="email">Email</label>
+            <input type="email" name="email" required class="form-control" id="email">
         </div>
         <div class="form-group">
-            <label for="Keterangan">Password</label>
-            <input type="password" name="password" required class="form-control">
+            <label for="password">Password</label>
+            <input type="password" name="password" required class="form-control" id="password">
         </div>
-        <div class=" form-group">
-            <label for="harga">Kategori</label>
-            <select class="form-control" name="level" id="idkategori">
+        <div class="form-group">
+            <label for="level">Level</label>
+            <select name="level" id="level" class="form-control">
                 <?php foreach ($level as $key) : ?>
                     <option value="<?= $key ?>"><?= $key ?></option>
-                <?php endforeach; ?>
+                <?php endforeach ?>
             </select>
         </div>
         <div class="form-group">
             <input type="submit" name="simpan" value="SIMPAN">
         </div>
+
+
     </form>
 </div>
-
 <?= $this->endSection() ?>

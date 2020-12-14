@@ -10,29 +10,32 @@ if (isset($_GET['page_page'])) {
 } else {
     $no = 1;
 }
-
 ?>
 
 <div class="row">
-
     <div class="col">
-        <h3><?= $judul ?></h3>
+        <h3> <?= $judul; ?> </h3>
     </div>
 </div>
 
+
+
 <div class="row mt-2">
+
     <div class="col">
         <table class="table">
+
             <tr>
                 <th>No</th>
                 <th>Pelanggan</th>
                 <th>Alamat</th>
-                <th>Telepon</th>
+                <th>Telp</th>
                 <th>Email</th>
-                <th>Pilihan</th>
+                <th>Aksi</th>
                 <th>Status</th>
+
             </tr>
-            <?php $no ?>
+            <?php $no; ?>
             <?php foreach ($pelanggan as $key => $value) : ?>
                 <tr>
                     <td><?= $no++ ?></td>
@@ -40,22 +43,26 @@ if (isset($_GET['page_page'])) {
                     <td><?= $value['alamat'] ?></td>
                     <td><?= $value['telp'] ?></td>
                     <td><?= $value['email'] ?></td>
-                    <td><a href="<?= base_url() ?>/admin/pelanggan/delete/<?= $value['idpelanggan'] ?>"><img src="<?= base_url('/icon/trash.svg') ?>" alt=""></a></td>
-                    <?php
-                    if ($value['aktif'] == 1) {
-                        $aktif = "AKTIF";
-                    } else {
-                        $aktif = "NON AKTIF";
-                    }
-
+                    <td><a href="<?= base_url() ?>/admin/pelanggan/delete/<?= $value['idpelanggan'] ?>"><img src="<?= base_url('/icon/can.svg'); ?>" alt=""></a>
+                    </td>
+                    <?php 
+                        if ($value['aktif']==1) {
+                            $aktif="AKTIF";
+                        } else {
+                            $aktif="NON AKTIF";
+                        }
                     ?>
-                    <td>
-                        <a href="<?= base_url() ?>/admin/pelanggan/update/<?= $value['idpelanggan'] ?>/<?= $value['aktif'] ?>"><?= $aktif ?></a>
+                    <td><a href="<?= base_url() ?>/admin/pelanggan/update/<?= $value['idpelanggan'] ?>/<?= $value['aktif'] ?>"><?=$aktif ?></a>
                     </td>
                 </tr>
-            <?php endforeach; ?>
+            <?php endforeach ?>
+
         </table>
-        <?= $pager->links('page', 'bootstrap') ?>
+    
+
+    <?= $pager->links('page', 'bootstrap') ?>
     </div>
+
 </div>
+
 <?= $this->endSection() ?>

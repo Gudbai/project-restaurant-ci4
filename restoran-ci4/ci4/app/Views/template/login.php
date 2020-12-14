@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
     <div class="container">
         <div class="row mt-5">
             <div class="col-5 mx-auto">
@@ -22,25 +23,28 @@
                     ?>
                 </div>
                 <span>
-                    <h1>Login Admin</h1>
+                    <h1>LOGIN ADMIN</h1>
                 </span>
                 <hr>
-                <form action="<?= base_url('/admin/login') ?>" method="post">
+                <form action="<?= base_url('/admin/login') ?>" method="POST">
                     <div class="form-group">
-                        <label for="Kategori">Email</label>
-                        <input type="email" name="email" required class="form-control">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" required class="form-control" id="email">
                     </div>
                     <div class="form-group">
-                        <label for="Keterangan">Password</label>
-                        <input type="password" name="password" required class="form-control">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" required class="form-control" id="password">
                     </div>
                     <div class="form-group">
-                        <input class="btn btn-danger" type="submit" name="login" value="LOGIN">
+                        <input type="submit" class="btn btn-success" name="login" value="LOGIN">
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+
+
 
 </body>
 

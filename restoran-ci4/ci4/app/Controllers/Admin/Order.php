@@ -2,17 +2,19 @@
 
 namespace App\Controllers\Admin;
 
-use \App\Controllers\BaseController;
+use App\Controllers\BaseController;
+// use App\Models\Kategori_M;
 
-class Order extends BaseController
+class order extends BaseController
 {
     public function index()
     {
         $pager = \Config\Services::pager();
         $db = \Config\Database::connect();
-
         $sql = "SELECT * FROM vorder";
+
         $result = $db->query($sql);
+
         $row = $result->getResult('array');
 
         $total = count($row);
@@ -21,19 +23,20 @@ class Order extends BaseController
         if (isset($_GET['page'])) {
             $page = $_GET['page'];
             $mulai = ($tampil * $page) - $tampil;
-            $sql = "SELECT * FROM vorder ORDER BY status ASC LIMIT $mulai, $tampil";
+            $sql = "SELECT * FROM vorder ORDER BY status ASC LIMIT $mulai,$tampil";
         } else {
-            $sql = "SELECT * FROM vorder ORDER BY status ASC LIMIT 0, $tampil";
+            $sql = "SELECT * FROM vorder ORDER BY status ASC LIMIT 0,$tampil";
         }
-        $result = $db->query($sql);
-        $row = $result->getResult('array');
 
+        $result = $db->query($sql);
+
+        $row = $result->getResult('array');
         $data = [
             'judul' => 'Data Order',
             'order' => $row,
             'pager' => $pager,
-            'perPage' => $tampil,
-            'total' => $total
+            'tampil' => $tampil,
+            'total' => $total,
         ];
 
         echo view('order/select', $data);
@@ -42,17 +45,20 @@ class Order extends BaseController
     public function find($id = null)
     {
         $db = \Config\Database::connect();
-
         $sql = "SELECT * FROM vorder WHERE idorder=$id";
+
         $result = $db->query($sql);
+
         $row = $result->getResult('array');
+
+        echo "<hr>";
 
         $sql = "SELECT * FROM vorderdetail WHERE idorder=$id";
         $result = $db->query($sql);
         $detail = $result->getResult('array');
 
         $data = [
-            'judul' => 'Pembayaran Pelanggan',
+            'judul' => 'PEMBAYARAN PELANGGAN',
             'order' => $row,
             'detail' => $detail
         ];
@@ -67,6 +73,7 @@ class Order extends BaseController
             $idorder = $_POST['idorder'];
             $total = $_POST['total'];
             $bayar = $_POST['bayar'];
+
 
             if ($bayar < $total) {
                 session()->setFlashdata('info', 'Pembayaran Kurang !');

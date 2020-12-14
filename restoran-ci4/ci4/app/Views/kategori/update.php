@@ -13,24 +13,24 @@
 </div>
 
 <div class="col">
-    <h3>Update Data</h3>
+    <h3> UPDATE DATA</h3>
 </div>
 
 <div class="col-8">
-    <form action="<?= base_url() ?>/admin/kategori/update" method="post">
+    <form action="<?= base_url('/admin/kategori/update') ?>" method="POST">
         <div class="form-group">
-            <label for="Kategori">Kategori</label>
-            <input type="text" name="kategori" value="<?= $kategori['kategori'] ?>" required class="form-control">
+            <label for="kategori">Kategori</label>
+            <input type="text" name="kategori" value="<?= $kategori['kategori'] ?>" required class="form-control" id="kategori">
         </div>
         <div class="form-group">
-            <label for="Keterangan">Keterangan</label>
-            <input type="text" name="keterangan" value="<?= $kategori['keterangan'] ?>" required class="form-control">
+            <label for="keterangan">Keterangan</label>
+            <input type="text" name="keterangan" value="<?= $kategori['keterangan'] ?>" required class="form-control" id="keterangan">
         </div>
-        <input type="hidden" name="idkategori" value="<?= $kategori['idkategori'] ?>">
         <div class="form-group">
+            <input type="hidden" name="idkategori" value="<?= $kategori['idkategori'] ?>">
             <input type="submit" name="simpan" value="SIMPAN">
         </div>
+
     </form>
 </div>
-
 <?= $this->endSection() ?>

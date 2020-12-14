@@ -3,20 +3,20 @@
 <?= $this->section('content') ?>
 
 <div class="row">
-    <?= view_cell('\App\Controllers\Admin\Menu::option') ?>
+    <?= view_cell('App\Controllers\Admin\Menu::option') ?>
 </div>
 
 <div class="row">
 
+    <h1> UPLOAD IMAGE</h1>
 
-
-    <h1>Upload Image</h1>
-    <form action="<?= base_url('/admin/menu/insert') ?>" method="post" enctype="multipart/form-data">
+    <form action="<?= base_url('/admin/menu/insert') ?>" method="POST" enctype="multipart/form-data">
         Gambar : <input type="file" name="gambar" required>
-        <br>
 
+        <br>
         <input type="submit" name="simpan" value="SIMPAN">
+
+
     </form>
 </div>
-
 <?= $this->endSection() ?>

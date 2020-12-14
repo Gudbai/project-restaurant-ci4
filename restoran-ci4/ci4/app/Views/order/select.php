@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col">
-        <h3><?= $judul ?></h3>
+        <h3><?=$judul ?></h3>
     </div>
 </div>
 
@@ -16,7 +16,6 @@ if (isset($_GET['page'])) {
 } else {
     $no = 1;
 }
-
 ?>
 
 <div class="row mt-2">
@@ -24,7 +23,7 @@ if (isset($_GET['page'])) {
         <table class="table">
             <tr>
                 <th>No</th>
-                <th>ID Order</th>
+                <th>Idorder</th>
                 <th>Pelanggan</th>
                 <th>Tanggal</th>
                 <th>Total</th>
@@ -32,7 +31,7 @@ if (isset($_GET['page'])) {
                 <th>Kembali</th>
                 <th>Status</th>
             </tr>
-            <?php foreach ($order as $value) : ?>
+            <?php foreach ($order as  $value) : ?>
                 <tr>
                     <td><?= $no++ ?></td>
                     <td><?= $value['idorder'] ?></td>
@@ -41,20 +40,18 @@ if (isset($_GET['page'])) {
                     <td><?= $value['total'] ?></td>
                     <td><?= $value['bayar'] ?></td>
                     <td><?= $value['kembali'] ?></td>
-                    <?php
-                    if ($value['status'] == 1) {
-                        $status = "Lunas";
-                    } else {
-                        $status = "<a href='" . base_url("/admin/order/find") . "/" . $value['idorder'] . "'>Ngutang</a>";
-                    }
-
+                    <?php 
+                        if ($value['status']==1) {
+                            $status="LUNAS";
+                        } else {
+                            $status="<a href='".base_url("/admin/order/find")."/".$value['idorder']."'>BAYAR</a>";
+                        }
                     ?>
                     <td><?= $status ?></td>
-
                 </tr>
-            <?php endforeach; ?>
+            <?php endforeach ?>
         </table>
-        <?= $pager->makeLinks(1, $perPage, $total, 'bootstrap') ?>
+        <?= $pager->makeLinks(1,$tampil,$total,'bootstrap') ?>
     </div>
 </div>
 

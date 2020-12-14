@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Filters;
+<?php namespace App\Filters;
 
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -11,7 +9,7 @@ class Auth implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         if (!session()->get('loggedIn')) {
-            return redirect()->to(base_url('/login'));
+            return redirect()->to(base_url('/dashboard'));
         }
     }
 

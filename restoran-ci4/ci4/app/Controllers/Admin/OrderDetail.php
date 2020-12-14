@@ -2,47 +2,47 @@
 
 namespace App\Controllers\Admin;
 
-use \App\Controllers\BaseController;
-use \App\Models\OrderDetail_M;
+use App\Controllers\BaseController;
+use App\Models\OrderDetail_M;
 
 class OrderDetail extends BaseController
 {
-    public function index()
-    {
-        $pager = \Config\Services::pager();
-        $model  = new OrderDetail_M();
+	public function index()
+	{
+		$pager = \Config\Services::pager();
+		$model = new OrderDetail_M();
 
-        $data = [
-            'judul' => 'DATA RINCIAN ORDER',
-            'orderdetail' => $model->paginate(3, 'page'),
-            'pager' => $model->pager
-        ];
 
-        return view("orderdetail/select", $data);
-    }
+		$data = [
+			'judul' => 'DATA RINCIAN ORDER',
+			'orderdetail' => $model->paginate(3, 'page'),
+			'pager' => $model->pager
+		];
 
-    public function cari()
-    {
-        if (isset($_POST['awal'])) {
-            $awal = $_POST['awal'];
-            $sampai = $_POST['sampai'];
 
-            $sql = "SELECT * FROM vorderdetail WHERE tglorder BETWEEN '$awal' AND '$sampai' ";
+		return view("orderdetail/select", $data);
+	}
 
-            $db = \Config\Database::connect();
+	public function cari()
+	{
+		if (isset($_POST['awal'])) {
+			$awal = $_POST['awal'];
+			$sampai = $_POST['sampai'];
 
-            $result = $db->query($sql);
-            $row = $result->getResult('array');
+			$sql = "SELECT * FROM vorderdetail WHERE tglorder BETWEEN '$awal' AND '$sampai'";
 
-            $data = [
-                'judul' => 'DATA RINCIAN ORDER',
-                'orderdetail' => $row
-            ];
+			$db = \Config\Database::connect();
 
-            return view("orderdetail/cari", $data);
-        }
-    }
+			$result = $db->query($sql);
+			$row = $result->getResult('array');
+			$data = [
+				'judul' => 'DATA RINCIAN ORDER',
+				'orderdetail' => $row,
+			];
+			return view("orderdetail/cari", $data);
+		}
+	}
 
-    //--------------------------------------------------------------------
+	//--------------------------------------------------------------------
 
 }

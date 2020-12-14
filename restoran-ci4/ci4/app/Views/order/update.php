@@ -12,10 +12,10 @@
         <p>Pelanggan : <?= $order[0]['pelanggan'] ?></p>
     </div>
     <div class="col">
-        <p>Tanggal : <?= date("d-m-Y", strtotime($order[0]['tglorder']))  ?></p>
+        <p>Tanggal : <?= date("d-m-Y", strtotime($order[0]['tglorder'])) ?></p>
     </div>
     <div class="col">
-        <p>Total : <b> <?= number_format($order[0]['total'])  ?></b></p>
+        <p>Total : <b><?= number_format($order[0]['total'])  ?></b></p>
     </div>
 </div>
 
@@ -33,20 +33,20 @@
 
 <div class="row">
     <div class="col-6">
-        <form action="<?= base_url('/admin/order/update') ?>" method="post">
+        <form action="<?= base_url('/admin/order/update') ?>" method="POST">
             <div class="form-group">
-                <label for="Kategori">Bayar</label>
-                <input type="number" name="bayar" required class="form-control">
+                <label for="bayar">Bayar</label>
+                <input type="number" name="bayar" required class="form-control" id="bayar">
             </div>
-            <input type="hidden" name="total" value="<?= $order[0]['total'] ?>" required class="form-control">
-            <input type="hidden" name="idorder" value="<?= $order[0]['idorder'] ?>" required class=" form-control">
+            <div class="form-group">
+                <input type="hidden" name="total" value="<?= $order[0]['total'] ?>" required class="form-control">
+                <input type="hidden" name="idorder" value="<?= $order[0]['idorder'] ?>" required class="form-control">
+            </div>
             <div class="form-group">
                 <input type="submit" name="simpan" value="SIMPAN">
             </div>
+        </form>
     </div>
-
-    </form>
-
 </div>
 <div class="row">
     <div class="col">
@@ -63,18 +63,17 @@
                 <th>Jumlah</th>
                 <th>Total</th>
             </tr>
-            <?php $no = 1 ?>
+            <?php $no = 1; ?>
             <?php foreach ($detail as $value) : ?>
                 <tr>
                     <td><?= $no++ ?></td>
                     <td><?= $value['menu'] ?></td>
                     <td><?= $value['hargajual'] ?></td>
                     <td><?= $value['jumlah'] ?></td>
-                    <td><?= $value['jumlah'] * $value['hargajual']; ?></td>
+                    <td><?= $value['jumlah'] * $value['hargajual']  ?></td>
                 </tr>
-            <?php endforeach; ?>
+            <?php endforeach ?>
         </table>
     </div>
 </div>
-
 <?= $this->endSection() ?>
